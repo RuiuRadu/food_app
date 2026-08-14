@@ -23,7 +23,7 @@ export default function Checkout() {
     const cartCtx = useContext(CartContext);
 
 
-    const { sendRequest, isLoading: isSending, error, data, clearData } = useHttp('http://localhost:3000/orders', requestConfig)
+    const { sendRequest, isLoading: isSending, error, data, clearData } = useHttp('/orders', requestConfig)
       
 
 
