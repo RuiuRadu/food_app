@@ -6,6 +6,7 @@ import Input from './UI/Input.jsx';
 import UserProgressContext from '../store/UserProgressContext.jsx';
 import Button from './UI/Button.jsx';
 import useHttp from '../hooks/useHttp.js';
+import Error from './Error.jsx';
 
 const requestConfig = {
     method: 'POST',
@@ -23,7 +24,8 @@ export default function Checkout() {
     const cartCtx = useContext(CartContext);
 
 
-    const { sendRequest, isLoading: isSending, error, data, clearData } = useHttp('/orders', requestConfig)
+    const { sendRequest, isLoading: isSending, error, data, clearData } =
+    useHttp('/api/orders', requestConfig);
       
 
 

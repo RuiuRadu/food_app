@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 import express from 'express';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,7 +10,13 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use((req, res, next) => {
+  if (req.body !== undefined) {
+    return next();
+  }
+
+  express.json()(req, res, next);
+});
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 app.use((req, res, next) => {

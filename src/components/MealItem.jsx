@@ -8,7 +8,6 @@ export default function MealItem({meal}) {
 
     const cartCtx = useContext(CartContext);
 
-    console.log(meal.image);
 
   function handleAddMealToCart() {
     cartCtx.addItem(meal);
