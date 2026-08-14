@@ -7,7 +7,7 @@ const requestConfig = {}
 
 export default function Meals() {
 
-  const { data: loadedMeals, isLoading, error } = useHttp('/meals', requestConfig, []);
+  const { data: loadedMeals, isLoading, error } = useHttp('/api/meals', requestConfig, [])
 
   if(isLoading) {
     return <p>Loading...</p>;

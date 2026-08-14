@@ -8,6 +8,8 @@ export default function MealItem({meal}) {
 
     const cartCtx = useContext(CartContext);
 
+    console.log(meal.image);
+
   function handleAddMealToCart() {
     cartCtx.addItem(meal);
 
@@ -18,6 +20,7 @@ export default function MealItem({meal}) {
     <li className="meal-item">
         <article>
         <img src={`/${meal.image}`} alt={meal.name} />
+        {/* <img src={`/${meal.image}`} alt={meal.name} /> */}
         <div>
         <h3>{meal.name}</h3>
         <p className="meal-item-price">{currencyFormatter.format(meal.price)}</p>
