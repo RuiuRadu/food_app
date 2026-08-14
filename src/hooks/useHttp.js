@@ -22,15 +22,33 @@ export default function useHttp(url, config, initialData) {
         setData(initialData);
     }
 
+        // const sendRequest = useCallback(async function sendRequest(data) {
+        //     setIsLoading(true);
+        //     try {
+        //         const resData = await sendHttpRequest(url, {...config, body: data});
+        //         setData(resData);
+        //     } catch (error) {
+        //         setError(error.message || 'Something went wrong!');
+        //     }
+        // setIsLoading(false);
+        // }, [url, config]);
+
         const sendRequest = useCallback(async function sendRequest(data) {
             setIsLoading(true);
+            setError(null);
+        
             try {
-                const resData = await sendHttpRequest(url, {...config, body: data});
+                const resData = await sendHttpRequest(url, {
+                    ...config,
+                    body: data,
+                });
+        
                 setData(resData);
             } catch (error) {
                 setError(error.message || 'Something went wrong!');
+            } finally {
+                setIsLoading(false);
             }
-        setIsLoading(false);
         }, [url, config]);
 
 useEffect(() => {
